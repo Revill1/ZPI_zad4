@@ -28,4 +28,16 @@ public class CheckSumRA
 		String result = "suma kontrolna dla slowa "+t+" dla algorytmu SHA : \n\n\n\n" + sum;
 		return "<ApiChecksum>" + "<text>" + t + "</text>" + "<checkSum>" + result + "</checkSum>" + "</ApiChecksum>";
 	}
+	
+	@Path("MD5/{c}")
+	@GET
+	@Produces("application/xml")
+	public String getCheckSumMD5(@PathParam("c") String c) throws NoSuchAlgorithmException {
+		String t = c;
+		String sum;
+		sum = ApiChecksum.createSum(t, "MD5");
+
+		String result = "suma kontrolna dla slowa "+t+" dla algorytmu MD5 : \n\n\n\n" + sum;
+		return "<ApiChecksum>" + "<text>" + t + "</text>" + "<checkSum>" + result + "</checkSum>" + "</ApiChecksum>";
+	}
 }
