@@ -15,7 +15,7 @@ import ZipArchive.*;
 import src.ApiChecksum;
 
 @Path("/checkSum")
-public class RestAPI 
+public class CheckSumRA 
 {		
 	
 }
