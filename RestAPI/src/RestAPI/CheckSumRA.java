@@ -14,7 +14,7 @@ import ZipArchive.*;
 
 import src.ApiChecksum;
 
-@Path("/checkSum")
+@Path("/checkSumAPI")
 public class CheckSumRA 
 {		
 	@Path("SHA/{c}")
