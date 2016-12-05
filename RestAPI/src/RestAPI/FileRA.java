@@ -21,21 +21,21 @@ public class FileRA {
 
 	@Path("url")
 	@POST
-	@Consumes("text/plain")
-	@Produces(MediaType.APPLICATION_JSON)
+	//@Consumes("text/plain")
+	@Consumes(MediaType.APPLICATION_OCTET_STREAM)
 	public Response getFile(String url) throws IOException {
 		 String result = "Data post: "+url;
-/*
+
 		FileLibrary fileLibrary = new FileLibrary();
 		String path = "C:\\Users\\Adam\\Desktop\\files\\" + "pliczek";
 	
 	//	url = "http://mmajchr.kis.p.lodz.pl/zpi2/zadania/3a.txt";
 		
-		fileLibrary.DownloadFileFromRoute("http://mmajchr.kis.p.lodz.pl/zpi2/zadania/3a.txt", path);
+		fileLibrary.DownloadFileFromRoute(url, path);
 		File file = new File("C:\\Users\\Adam\\Desktop\\files\\pliczek"); 
 		
 		FileInputStream fis = new FileInputStream(file);
-		byte[] b = null;
+		byte[] b = new byte [1024];
 		fis.read(b);
 		
 		if(null != file)
@@ -46,9 +46,7 @@ public class FileRA {
 		{
 			System.out.println("file not ok");
 		}
-				  return Response.ok(file, MediaType.APPLICATION_OCTET_STREAM)
-				      .header("Content-Disposition", "attachment; filename=\"" + file.getName() + "\"" ) //optional
-				      .build();	*/
-				return  Response.status(201).entity(result).build(); 
+				  return Response.ok(file, MediaType.APPLICATION_OCTET_STREAM).status(201).build();	
+			//	return  Response.status(201).entity(result).build(); 
 	}
 }
