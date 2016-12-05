@@ -22,9 +22,10 @@ public class FileRA {
 	@Path("url")
 	@POST
 	@Consumes("text/plain")
-	@Produces(MediaType.APPLICATION_OCTET_STREAM)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response getFile(String url) throws IOException {
-
+		 String result = "Data post: "+url;
+/*
 		FileLibrary fileLibrary = new FileLibrary();
 		String path = "C:\\Users\\Adam\\Desktop\\files\\" + "pliczek";
 	
@@ -47,6 +48,7 @@ public class FileRA {
 		}
 				  return Response.ok(file, MediaType.APPLICATION_OCTET_STREAM)
 				      .header("Content-Disposition", "attachment; filename=\"" + file.getName() + "\"" ) //optional
-				      .build();
+				      .build();	*/
+				return  Response.status(201).entity(result).build(); 
 	}
 }
