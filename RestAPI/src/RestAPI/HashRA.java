@@ -22,7 +22,7 @@ public class HashRA
 	@Path("Hash/{c}")
 	@GET
 	@Produces("application/xml")
-	public String getCheckSumSHA(@PathParam("c") String c) 
+	public String GetHashKey(@PathParam("c") String c) 
 	{
 		String strToEncrypt = c;
 		KeyGenerator kGen;
