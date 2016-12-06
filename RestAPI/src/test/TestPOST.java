@@ -14,13 +14,19 @@ import com.sun.jersey.api.client.WebResource;
 public class TestPOST {
 
 	public static void main(String[] args) {
-		  try {
+		 testFile("http://mmajchr.kis.p.lodz.pl/zpi2/zadania/3a.txt");
+		 testEncrypt("do zaszyfrowania");
+	}
+	
+	public static void testFile(String url)
+	{
+		 try {
 			  	BufferedReader br = null;
 				FileReader fr = null;
 		        Client client = Client.create();
 		      
 		        WebResource webResource = client.resource("http://localhost:8000/RestAPI/crunchify/file/url");
-		        String input = "http://mmajchr.kis.p.lodz.pl/zpi2/zadania/3a.txt";
+		        String input = url;
 		        ClientResponse response = webResource.type(MediaType.APPLICATION_OCTET_STREAM)
 		           .post(ClientResponse.class, input);
 
@@ -46,6 +52,34 @@ public class TestPOST {
 		        br.close();
 		  } 
 		  catch (Exception e) 
+		  {
+			  e.printStackTrace();
+	      }
+	}
+	
+	public static void testEncrypt(String forCrypting)
+	{
+		try {
+		  	BufferedReader br = null;
+			FileReader fr = null;
+	        Client client = Client.create();
+	      
+	        WebResource webResource = client.resource("http://localhost:8000/RestAPI/crunchify/encrypt/string");
+	        String input = "[B@72a66cc6";
+	        ClientResponse response = webResource.type("text/plain")
+	           .post(ClientResponse.class, input);
+
+	        if (response.getStatus() != 201)
+	        {
+	            throw new RuntimeException("Failed : HTTP error code : "
+	                 + response.getStatus());
+	        }
+
+	        System.out.println("Output from Server .... \n");
+	        String output = response.getEntity(String.class);
+	        System.out.println(output);
+		}
+		catch (Exception e) 
 		  {
 			  e.printStackTrace();
 	      }
